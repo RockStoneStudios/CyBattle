@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 6425991490387149964}
   - component: {fileID: 906726236629934839}
   - component: {fileID: 9109140058698797114}
+  - component: {fileID: -4554352931799092246}
+  - component: {fileID: 7660965152122195711}
+  - component: {fileID: -6557287740657776598}
   m_Layer: 0
   m_Name: Weapon1Pickup
   m_TagString: Untagged
@@ -108,7 +111,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -4554352931799092246}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -257,3 +261,46 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4554352931799092246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895278139904825424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &7660965152122195711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895278139904825424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e975e60231505843814a247cde0ba1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 22
+--- !u!114 &-6557287740657776598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895278139904825424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d42659220ab3041ad9de47830c398b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 5.4
+  weaponType: 1
