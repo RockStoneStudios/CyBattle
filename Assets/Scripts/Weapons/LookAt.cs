@@ -1,3 +1,5 @@
+using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 public class LookAt : MonoBehaviour
@@ -5,12 +7,10 @@ public class LookAt : MonoBehaviour
     private Vector3 worldPosition;
     private Vector3 screenPosition;
     public GameObject crosshair;
+    // public TMP_Text nickName;
 
 
-    void Start()
-    {
-        Cursor.visible = false;
-    }
+  
 
     void FixedUpdate()
     {

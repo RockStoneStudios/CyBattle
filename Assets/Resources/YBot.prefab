@@ -277,7 +277,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a2abd4f67aefc24b9c6cca2d197adc7, type: 2}
+  - {fileID: 2100000, guid: 2fdc897af9a2d6d4ebe2b4c99847be35, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -456,9 +456,10 @@ GameObject:
   - component: {fileID: 574840066563514665}
   - component: {fileID: 5817172879900270397}
   - component: {fileID: 5980894846802636923}
+  - component: {fileID: 2118611632625615774}
   m_Layer: 0
   m_Name: YBot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +564,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2701661482861340606
 MonoBehaviour:
@@ -577,8 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3f05f3e4fd1544995726932fca7513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
-  rotateSpeed: 100
+  moveSpeed: 4.2
+  rotateSpeed: 105
   jumpForce: 300
   IsJump: 1
 --- !u!114 &6506832626106241480
@@ -1143,6 +1144,9 @@ MonoBehaviour:
   - {fileID: 4494952023741516019}
   - {fileID: 5539503669632877293}
   - {fileID: 3103336709570106165}
+  - {fileID: 6850481130881493744}
+  - {fileID: 5879643495907726714}
+  - {fileID: 927847662715651391}
   - {fileID: 1417941421396268191}
   - {fileID: 25120940072337756}
   - {fileID: 5668319525987870159}
@@ -1198,6 +1202,33 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &2118611632625615774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920948730262504303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d535eb7c2bae0747b6fcc8150bad9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonNumbers: 000000000100000002000000030000000400000005000000
+  viewId: 000000000000000000000000000000000000000000000000
+  colors:
+  - serializedVersion: 2
+    rgba: 1118901
+  - serializedVersion: 2
+    rgba: 1086475
+  - serializedVersion: 2
+    rgba: 8259347
+  - serializedVersion: 2
+    rgba: 947159
+  - serializedVersion: 2
+    rgba: 9636965
+  - serializedVersion: 2
+    rgba: 4079176
 --- !u!1 &1132391516742563835
 GameObject:
   m_ObjectHideFlags: 0
@@ -14384,6 +14415,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9032035327313937723, guid: 129441d84f6677445899188cd2c100f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1184528037879292867}
+    - targetCorrespondingSourceObject: {fileID: 9032035327313937723, guid: 129441d84f6677445899188cd2c100f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927847662715651391}
   m_SourcePrefab: {fileID: 100100000, guid: 129441d84f6677445899188cd2c100f4, type: 3}
 --- !u!4 &4900412271527021213 stripped
 Transform:
@@ -14407,6 +14441,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &927847662715651391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713399228251050023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &4592004124120458181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14492,6 +14542,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3411308027390953355, guid: ca41ecfb18a40ed4782291945630b1d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3996281062292356148}
+    - targetCorrespondingSourceObject: {fileID: 3411308027390953355, guid: ca41ecfb18a40ed4782291945630b1d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5879643495907726714}
   m_SourcePrefab: {fileID: 100100000, guid: ca41ecfb18a40ed4782291945630b1d1, type: 3}
 --- !u!1 &1219760783597478990 stripped
 GameObject:
@@ -14510,6 +14563,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5879643495907726714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219760783597478990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!4 &1992461668641668852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2602155066993663281, guid: ca41ecfb18a40ed4782291945630b1d1, type: 3}
@@ -14600,6 +14669,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3910777341545239941, guid: 6dacc251c78899646a2cdca9867b12e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5023931602385657059}
+    - targetCorrespondingSourceObject: {fileID: 3910777341545239941, guid: 6dacc251c78899646a2cdca9867b12e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6850481130881493744}
   m_SourcePrefab: {fileID: 100100000, guid: 6dacc251c78899646a2cdca9867b12e1, type: 3}
 --- !u!1 &8284138123436912245 stripped
 GameObject:
@@ -14618,6 +14690,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6850481130881493744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284138123436912245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!4 &8772162254692562127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4399471379469242175, guid: 6dacc251c78899646a2cdca9867b12e1, type: 3}
