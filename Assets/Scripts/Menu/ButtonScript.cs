@@ -6,11 +6,13 @@ public class ButtonScript : MonoBehaviour
     private GameObject[] players;
     private int myId;
     [SerializeField] GameObject panel;
+    private GameObject namesObject;
 
     private void Start()
     {
         Cursor.visible = true;
         panel = GameObject.Find("Choose Panel");
+        namesObject = GameObject.Find("NamesBg");
     }
 
 
@@ -40,7 +42,7 @@ public class ButtonScript : MonoBehaviour
             players[i].GetComponent<DisplayColor>().viewId[buttonNumber] = myId;
             players[i].GetComponent<DisplayColor>().ChooseColor();
         }
-
+        namesObject.GetComponent<Timer>().BeginTimer();
         gameObject.transform.gameObject.SetActive(false);
 
 
