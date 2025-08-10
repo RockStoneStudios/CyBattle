@@ -4,6 +4,7 @@ using Unity.Cinemachine;
 using Photon.Pun;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 
 public class WeaponChangeAdvance : MonoBehaviour
@@ -25,6 +26,10 @@ public class WeaponChangeAdvance : MonoBehaviour
     private TMP_Text ammoAmtText;
     public Sprite[] weaponIcons;
     public int[] ammoAmts;
+    public GameObject[] muzzleFlash;
+    private string shooterName; 
+    private string gotShotName; 
+    public float[] damageAmts;
 
 
     void Start()
@@ -53,23 +58,37 @@ public class WeaponChangeAdvance : MonoBehaviour
         }
     }
 
-    // void SetLookAt()
-    // {
-    //     if (aimTarget != null)
-    //     {
-    //         for (int i = 0; i < aimObjects.Length; i++)
-    //         {
-    //             var target = aimObjects[i].data.sourceObjects;
-    //             target.SetTransform(0, aimTarget.transform);
-    //             aimObjects[i].data.sourceObjects = target;
-    //         }
-    //         rig.Build();
-    //     }
-    // }
+
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (gameObject.GetComponent<PhotonView>().IsMine)
+            {
+                GetComponent<DisplayColor>().PlayGunShot(GetComponent<PhotonView>().Owner.NickName, weaponNumber);
+                gameObject.GetComponent<PhotonView>().RPC("GunMuzzleFlash", RpcTarget.All);
+                RaycastHit hit;
+                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                        if (Physics.Raycast(ray, out hit, 500))
+                        {
+                    if (hit.transform.gameObject.GetComponent<PhotonView>() != null)
+                    {
+                        gotShotName = hit.transform.gameObject.GetComponent<PhotonView>().Owner.NickName;
+                     
+                    }
+                    if (hit.transform.gameObject.GetComponent<DisplayColor>() != null)
+                    {
+                           hit.transform.gameObject.GetComponent<DisplayColor>().DeliverDamage(hit.transform.gameObject.GetComponent<PhotonView>().Owner.NickName, damageAmts[weaponNumber]);
+                    }
+                        shooterName = GetComponent<PhotonView>().Owner. NickName; Debug.Log(gotShotName + " got hit by " + shooterName);
+                }
+                          gameObject.layer = LayerMask. NameToLayer("Default");
+            }
+            
+        }
         if (Input.GetMouseButtonDown(1) && gameObject.GetComponent<PhotonView>().IsMine)
         {
             // weaponNumber++;
@@ -85,8 +104,8 @@ public class WeaponChangeAdvance : MonoBehaviour
                 weapons[i].SetActive(false);
             }
             weapons[weaponNumber].SetActive(true);
-             weaponIcon.GetComponent<Image>().sprite = weaponIcons[weaponNumber];
-                ammoAmtText.text = ammoAmts[weaponNumber].ToString();
+            weaponIcon.GetComponent<Image>().sprite = weaponIcons[weaponNumber];
+            ammoAmtText.text = ammoAmts[weaponNumber].ToString();
             leftHand.data.target = leftTargets[weaponNumber];
             rightHand.data.target = rightTargets[weaponNumber];
             rig.Build();
@@ -96,28 +115,46 @@ public class WeaponChangeAdvance : MonoBehaviour
 
 
     [PunRPC]
+    void GunMuzzleFlash()
+    {
+        muzzleFlash[weaponNumber].SetActive(true);
+        StartCoroutine(MuzzleOff());
+    }
 
+
+    [PunRPC]
     public void Change()
     {
         weaponNumber++;
-           
-            if (weaponNumber > weapons.Length - 1)
-            {
-                weaponNumber = 0;
-            }
-            for (int i = 0; i < weapons.Length; i++)
-            {
-                weapons[i].SetActive(false);
-            }
-            weapons[weaponNumber].SetActive(true);
-            leftHand.data.target = leftTargets[weaponNumber];
-            rightHand.data.target = rightTargets[weaponNumber];
-            rig.Build();
+
+        if (weaponNumber > weapons.Length - 1)
+        {
+            weaponNumber = 0;
+        }
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weapons[i].SetActive(false);
+        }
+        weapons[weaponNumber].SetActive(true);
+        leftHand.data.target = leftTargets[weaponNumber];
+        rightHand.data.target = rightTargets[weaponNumber];
+        rig.Build();
     }
 
 
 
+    IEnumerator MuzzleOff()
+    {
+        yield return new WaitForSeconds(0.031f);
+        gameObject.GetComponent<PhotonView>().RPC("MuzzleFlashOff", RpcTarget.All);
+       
+    }
 
+    [PunRPC]
+    void MuzzleFlashOff()
+    {
+     muzzleFlash[weaponNumber].SetActive(false);
+    }
 
 }
 
